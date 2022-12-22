@@ -12,7 +12,7 @@ bool dirty = false;
 
 bool IsEditing() // bad solution, you need to hook something from J.A.C.K to get map name! 
 {
-	char buffer[64];
+	char buffer[128];
 	GetWindowTextA(jack, buffer, sizeof(buffer));
 
 	std::string windowname = buffer;

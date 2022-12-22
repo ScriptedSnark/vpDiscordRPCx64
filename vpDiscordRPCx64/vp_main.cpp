@@ -7,6 +7,20 @@
 
 //-----------------------------------------------------------------------------
 // Initialize our J.A.C.K plugin (REVERSE ENGINEERING INTENSIFIES)
+// 
+// Clean implementation of vpMain (x64):
+// 
+// extern "C" long long EXPORT vpMain(unsigned long long* argv, int version)
+// {
+//		if (version != 10)
+//			return 10i64;
+// 
+//		//memcpy(&unk_18001B4B0, argv, *argv);
+// 
+//		setlocale(LC_ALL, "C");
+// 
+//		return 0i64;
+// }
 //-----------------------------------------------------------------------------
 extern "C" long long EXPORT vpMain(unsigned long long* argv, int version)
 {
@@ -18,14 +32,8 @@ extern "C" long long EXPORT vpMain(unsigned long long* argv, int version)
 
 	setlocale(LC_ALL, "C");
 
-	AllocConsole();
-	FILE* in, *out;
-	freopen_s(&in, "conin$", "r", stdin);
-	freopen_s(&out, "conout$", "w+", stdout);
-
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-
 	printf("========================\n");
+	printf("https://github.com/ScriptedSnark/vpDiscordRPCx64\n");
 	printf("Discord RPC plugin for J.A.C.K by ScriptedSnark\n");
 	printf("Build timestamp: " __TIMESTAMP__ "\n");
 	printf("========================\n");
