@@ -23,8 +23,7 @@ extern "C" long long EXPORT vpMain(unsigned long long* argv, int version)
 	freopen_s(&in, "conin$", "r", stdin);
 	freopen_s(&out, "conout$", "w+", stdout);
 
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, 11);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 
 	printf("========================\n");
 	printf("Discord RPC plugin for J.A.C.K by ScriptedSnark\n");

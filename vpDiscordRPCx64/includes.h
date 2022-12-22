@@ -16,6 +16,7 @@
 // WinAPI
 #include <Windows.h>
 #include <psapi.h>
+#include <TlHelp32.h>
 
 //STL
 #include <sstream>
