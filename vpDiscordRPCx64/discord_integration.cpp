@@ -74,6 +74,10 @@ void DiscordRPC_MainThread()
 	Discord_Initialize(APPLICATION_ID, &handlers, 1, NULL);
 
 	presence.largeImageKey = "jackhammer";
+	presence.buttonLabel[0] = "Download J.A.C.K";
+	presence.buttonUrl[0] = "https://jack.hlfx.ru/en/download.html";
+	presence.buttonLabel[1] = "Download RPC plugin";
+	presence.buttonUrl[1] = "https://github.com/ScriptedSnark/vpDiscordRPCx64/releases";
 	presence.startTimestamp = time(0);
 
 	jack = FindWindow("QWidget", "J.A.C.K.");
