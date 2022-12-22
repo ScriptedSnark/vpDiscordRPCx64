@@ -7,12 +7,6 @@
     <Filter Include="Headers">
       <UniqueIdentifier>{a400206e-67db-4ae9-99c0-e7e78f7d0bd7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MinHook">
-      <UniqueIdentifier>{937519db-4437-4a6a-a3f5-a2d0e0ad5e18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SPTLib">
-      <UniqueIdentifier>{23d6630b-37d3-4a13-87f1-b6c091e30f70}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="vp_main.cpp">
@@ -20,24 +14,6 @@
     </ClCompile>
     <ClCompile Include="discord_integration.cpp">
       <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="vp_hook.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\MinHook\buffer.c">
-      <Filter>MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\MinHook\hook.c">
-      <Filter>MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\MinHook\trampoline.c">
-      <Filter>MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\MinHook\hde\hde32.c">
-      <Filter>MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\MinHook\hde\hde64.c">
-      <Filter>MinHook</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,38 +23,8 @@
     <ClInclude Include="discord_integration.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\external\MinHook\buffer.h">
-      <Filter>MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\MinHook\MinHook.h">
-      <Filter>MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\MinHook\trampoline.h">
-      <Filter>MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\MinHook\hde\hde32.h">
-      <Filter>MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\MinHook\hde\hde64.h">
-      <Filter>MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\MinHook\hde\pstdint.h">
-      <Filter>MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\MinHook\hde\table32.h">
-      <Filter>MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\MinHook\hde\table64.h">
-      <Filter>MinHook</Filter>
-    </ClInclude>
     <ClInclude Include="vp_hook.h">
       <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\SPTLib\MemUtils.hpp">
-      <Filter>SPTLib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\SPTLib\patterns.hpp">
-      <Filter>SPTLib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

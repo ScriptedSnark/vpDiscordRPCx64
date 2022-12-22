@@ -46,10 +46,7 @@ extern "C" long long EXPORT vpMain(unsigned long long* argv, int version)
 DWORD WINAPI DllMain(_In_ void* _DllHandle, _In_ unsigned long _Reason, _In_opt_ void* _Reserved)
 {
 	if (_Reason == DLL_PROCESS_ATTACH)
-	{
-		HookJACK();
 		return 1;
-	}
 
 	return 0;
 }
