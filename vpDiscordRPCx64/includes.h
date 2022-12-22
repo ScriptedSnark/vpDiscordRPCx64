@@ -32,9 +32,6 @@
 #include "discord-rpc.h"
 #include "discord_integration.h"
 
-#include "patterns.hpp"
-#include "vp_hook.h"
-
 #define EXPORT __declspec(dllexport)
 
 #endif //INCLUDES_H_GUARD
