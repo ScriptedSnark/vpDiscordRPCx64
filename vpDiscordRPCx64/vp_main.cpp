@@ -12,15 +12,11 @@ constexpr int JACK_PLUGINS_VER = 10;
 #endif
 
 //-----------------------------------------------------------------------------
-// Initialize Discord RPC, print plugin info
+// Initialize Discord RPC
 //-----------------------------------------------------------------------------
 void InitPlugin()
 {
-	printf("========================\n");
-	printf("https://github.com/ScriptedSnark/vpDiscordRPCx64\n");
-	printf("Discord RPC plugin for J.A.C.K by ScriptedSnark\n");
-	printf("Build timestamp: " __TIMESTAMP__ "\n");
-	printf("========================\n");
+	// Do own things...
 
 	CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)DiscordRPC_MainThread, NULL, NULL, NULL); // Discord RPC
 }
@@ -30,32 +26,31 @@ void InitPlugin()
 // 
 // Clean implementation of vpMain (x64):
 // 
-// extern "C" long long EXPORT vpMain(unsigned long long* argv, int version)
+// extern "C" int EXPORT vpMain(unsigned long long* Src, int version)
 // {
 //		if (version != 10)
-//			return 10i64;
+//			return 10;
 // 
-//		//memcpy(&unk_18001B4B0, argv, *argv);
+//		//memcpy(&unk_18001B4B0, argv, *argv); - WARNING! It may contain some useful J.A.C.K API funcs!
 // 
 //		setlocale(LC_ALL, "C");
 // 
-//		return 0i64;
+//		return 0;
 // }
 //-----------------------------------------------------------------------------
 #ifdef _M_X64
-extern "C" long long EXPORT vpMain(unsigned long long* argv, int version) // 64-bit implementation
+extern "C" int EXPORT vpMain(unsigned long long* Src, int version) // 64-bit implementation
 {
 	if (version != JACK_PLUGINS_VER)
-		return 10i64; // from IDA pseudocode
+		return JACK_PLUGINS_VER; // from IDA pseudocode
 
-	/* TODO: do memcpy, it may contain some useful funcs */
-	//memcpy(&unk_18001B4B0, argv, *argv);
+	// TODO: memcpy(&unk_18001B4B0, argv, *argv); | other things for this
 
 	setlocale(LC_ALL, "C");
 
 	InitPlugin();
 
-	return 0i64; // from IDA pseudocode
+	return 0; // from IDA pseudocode
 }
 #else
 extern "C" int EXPORT vpMain(DWORD* Src, int version) // 32-bit implementation
