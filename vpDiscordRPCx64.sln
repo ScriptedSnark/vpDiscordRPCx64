@@ -15,10 +15,10 @@ Global
 		Retail Release|x86 = Retail Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Debug|x64.ActiveCfg = Debug|Win32
-		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Debug|x64.Build.0 = Debug|Win32
-		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Debug|x86.ActiveCfg = Release|Win32
-		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Debug|x86.Build.0 = Release|Win32
+		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Debug|x64.ActiveCfg = Debug|x64
+		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Debug|x64.Build.0 = Debug|x64
+		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Debug|x86.ActiveCfg = Debug|Win32
+		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Debug|x86.Build.0 = Debug|Win32
 		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Release|x64.ActiveCfg = Release|x64
 		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Release|x64.Build.0 = Release|x64
 		{9C5F1E85-C7E7-4AC6-BAD1-BC67DCBE57C1}.Free Release|x86.ActiveCfg = Release|Win32
