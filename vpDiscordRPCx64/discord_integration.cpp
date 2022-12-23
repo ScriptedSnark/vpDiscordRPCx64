@@ -84,6 +84,7 @@ void DiscordRPC_MainThread()
 	Discord_Initialize(APPLICATION_ID, &handlers, 1, NULL);
 
 	presence.largeImageKey = "jackhammer";
+	presence.largeImageText = "Just Another Creation Kit (J.A.C.K)";
 	presence.buttonLabel[0] = "Download J.A.C.K";
 	presence.buttonUrl[0] = "https://jack.hlfx.ru/en/download.html";
 	presence.buttonLabel[1] = "Download RPC plugin";
