@@ -24,7 +24,11 @@
 //-----------------------------------------------------------------------------
 extern "C" long long EXPORT vpMain(unsigned long long* argv, int version)
 {
+#ifdef RETAIL
+	if (version != 100)
+#else
 	if (version != 10)
+#endif
 		return 10i64; // from IDA pseudocode
 
 	/* TODO: do memcpy, it may contain some useful funcs */
