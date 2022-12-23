@@ -14,6 +14,7 @@ enum DiscordRPC_Mode
 {
 	IDLE,
 	EDITING,
+	SETTINGS,
 };
 
 extern DiscordRPC_Mode mode;

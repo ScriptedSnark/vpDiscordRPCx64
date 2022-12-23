@@ -29,6 +29,16 @@ bool IsEditing() // bad solution, you need to hook something from J.A.C.K to get
 	return true;
 }
 
+bool IsInSettings()
+{
+	HWND settings = FindWindow(0, "Configure J.A.C.K.");
+
+	if (settings == NULL)
+		return false;
+
+	return true;
+}
+
 void handle_ready(const DiscordUser*)
 {
 	printf("Connected to Discord.\n");
@@ -89,7 +99,9 @@ void DiscordRPC_MainThread()
 
 		dirty = false;
 
-		if (IsEditing())
+		if (IsInSettings())  // Settings needs to be first cause can't edit map with settings open
+			mode = SETTINGS;
+		else if (IsEditing())
 			mode = EDITING;
 		else
 			mode = IDLE;
@@ -106,6 +118,10 @@ void DiscordRPC_MainThread()
 
 		case EDITING:
 			set_state(&presence, editing_map.c_str());
+			break;
+
+		case SETTINGS:
+			set_state(&presence, "Configuring Settings");
 			break;
 		}
 
