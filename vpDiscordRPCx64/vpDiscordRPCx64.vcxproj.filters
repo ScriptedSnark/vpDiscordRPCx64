@@ -23,8 +23,5 @@
     <ClInclude Include="discord_integration.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="vp_hook.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

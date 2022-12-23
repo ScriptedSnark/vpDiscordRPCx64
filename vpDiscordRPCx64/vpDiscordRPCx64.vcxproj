@@ -212,7 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="discord_integration.h" />
-    <ClInclude Include="vp_hook.h" />
     <ClInclude Include="includes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
