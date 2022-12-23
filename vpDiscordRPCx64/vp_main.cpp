@@ -58,8 +58,8 @@ extern "C" int EXPORT vpMain(DWORD* Src, int version) // 32-bit implementation
 	if (*Src < 720u) // 0x2D0u -> 720u
 		return -1;
 
-	if (version != 10) // TODO: support Steam 32-bit version (use JACK_PLUGINS_VER macro)
-		return 10;
+	if (version != JACK_PLUGINS_VER)
+		return JACK_PLUGINS_VER;
 
 	//memcpy(&unk_100170D8, Src, *Src);
 
