@@ -5,6 +5,12 @@
 
 #include "includes.h"
 
+#ifdef RETAIL
+constexpr int JACK_PLUGINS_VER = 100;
+#else
+constexpr int JACK_PLUGINS_VER = 10;
+#endif
+
 //-----------------------------------------------------------------------------
 // Initialize Discord RPC, print plugin info
 //-----------------------------------------------------------------------------
@@ -39,11 +45,7 @@ void InitPlugin()
 #ifdef _M_X64
 extern "C" long long EXPORT vpMain(unsigned long long* argv, int version) // 64-bit implementation
 {
-#ifdef RETAIL
-	if (version != 100)
-#else
-	if (version != 10)
-#endif
+	if (version != JACK_PLUGINS_VER)
 		return 10i64; // from IDA pseudocode
 
 	/* TODO: do memcpy, it may contain some useful funcs */
@@ -58,10 +60,10 @@ extern "C" long long EXPORT vpMain(unsigned long long* argv, int version) // 64-
 #else
 extern "C" int EXPORT vpMain(DWORD* Src, int version) // 32-bit implementation
 {
-	if (*Src < 0x2D0u)
+	if (*Src < 720u) // 0x2D0u -> 720u
 		return -1;
 
-	if (version != 10)
+	if (version != 10) // TODO: support Steam 32-bit version (use JACK_PLUGINS_VER macro)
 		return 10;
 
 	//memcpy(&unk_100170D8, Src, *Src);
