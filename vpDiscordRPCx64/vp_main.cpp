@@ -31,7 +31,7 @@ void InitPlugin()
 //		if (version != 10)
 //			return 10;
 // 
-//		//memcpy(&unk_18001B4B0, argv, *argv); - WARNING! It may contain some useful J.A.C.K API funcs!
+//		//memcpy(&unk_18001B4B0, Src, *Src); - WARNING! It may contain some useful J.A.C.K API funcs!
 // 
 //		setlocale(LC_ALL, "C");
 // 
@@ -44,7 +44,7 @@ extern "C" int EXPORT vpMain(unsigned long long* Src, int version) // 64-bit imp
 	if (version != JACK_PLUGINS_VER)
 		return JACK_PLUGINS_VER; // from IDA pseudocode
 
-	// TODO: memcpy(&unk_18001B4B0, argv, *argv); | other things for this
+	// TODO: memcpy(&unk_18001B4B0, Src, *Src); | other things for this
 
 	setlocale(LC_ALL, "C");
 
