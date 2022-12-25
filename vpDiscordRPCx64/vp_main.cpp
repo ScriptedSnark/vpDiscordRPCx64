@@ -23,20 +23,6 @@ void InitPlugin()
 
 //-----------------------------------------------------------------------------
 // Initialize our J.A.C.K plugin (REVERSE ENGINEERING INTENSIFIES)
-// 
-// Clean implementation of vpMain (x64):
-// 
-// extern "C" int EXPORT vpMain(unsigned long long* Src, int version)
-// {
-//		if (version != 10)
-//			return 10;
-// 
-//		//memcpy(&unk_18001B4B0, Src, *Src); - WARNING! It may contain some useful J.A.C.K API funcs!
-// 
-//		setlocale(LC_ALL, "C");
-// 
-//		return 0;
-// }
 //-----------------------------------------------------------------------------
 #ifdef _M_X64
 extern "C" int EXPORT vpMain(unsigned long long* Src, int version) // 64-bit implementation
