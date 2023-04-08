@@ -5,12 +5,6 @@
 
 #include "includes.h"
 
-#ifdef RETAIL
-constexpr int JACK_PLUGINS_VER = 100;
-#else
-constexpr int JACK_PLUGINS_VER = 10;
-#endif
-
 //-----------------------------------------------------------------------------
 // Initialize Discord RPC
 //-----------------------------------------------------------------------------
@@ -27,9 +21,6 @@ void InitPlugin()
 #ifdef _M_X64
 extern "C" int EXPORT vpMain(unsigned long long* Src, int version) // 64-bit implementation
 {
-	if (version != JACK_PLUGINS_VER)
-		return JACK_PLUGINS_VER; // from IDA pseudocode
-
 	// TODO: memcpy(&unk_18001B4B0, Src, *Src); | other things for this
 
 	setlocale(LC_ALL, "C");
@@ -43,9 +34,6 @@ extern "C" int EXPORT vpMain(DWORD* Src, int version) // 32-bit implementation
 {
 	if (*Src < 720u) // 0x2D0u -> 720u
 		return -1;
-
-	if (version != JACK_PLUGINS_VER)
-		return JACK_PLUGINS_VER;
 
 	//memcpy(&unk_100170D8, Src, *Src);
 
