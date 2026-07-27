@@ -33,3 +33,5 @@ Can be configured with GUI though. Reload button in plugin actions applies chang
 ## Showcase
 ![image1](https://user-images.githubusercontent.com/51358194/209185900-95a19b28-81ce-4a8a-99bf-f8502f3b3086.png)
 ![image](https://user-images.githubusercontent.com/51358194/209185885-14b804d6-353e-4cda-8662-e540221ad561.png)
+![](https://github.com/user-attachments/assets/ca37b991-79fb-40e3-bfdb-2ef615763fa3)
+
