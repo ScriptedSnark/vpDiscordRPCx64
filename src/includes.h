@@ -13,26 +13,43 @@
 #define INCLUDES_H_GUARD
 #pragma once
 
+#ifdef _WIN32
 // WinAPI
 #include <Windows.h>
 #include <psapi.h>
 #include <TlHelp32.h>
+#endif
 
 //STL
-#include <sstream>
-#include <vector>
-#include <map>
 #include <string>
-#include <functional>
-#include <array>
+#include <vector>
+#include <algorithm>
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <atomic>
 
 #include <locale.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
-#include "discord-rpc.h"
+// J.A.C.K plugin SDK
+#include "PluginAPI.h"
+#include "PluginActions.h"
+
+#include "discord_rpc.h"
+
+#include "ini.h"
+#include "log.h"
+#include "settings.h"
 #include "discord_integration.h"
 
-#define EXPORT __declspec(dllexport)
+#ifndef _WIN32
+#include "x11.h"
+#endif
 
 #endif //INCLUDES_H_GUARD
 

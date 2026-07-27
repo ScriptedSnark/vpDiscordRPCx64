@@ -1,3 +1,6 @@
 .vs/
-vpDiscordRPCx64/x86/
-vpDiscordRPCx64/x64/
+build/
+out/
+CMakeUserPresets.json
+/_build
+/dist

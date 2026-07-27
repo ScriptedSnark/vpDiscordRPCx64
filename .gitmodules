@@ -1,0 +1,6 @@
+[submodule "external/rapidjson"]
+	path = external/rapidjson
+	url = https://github.com/Tencent/rapidjson.git
+[submodule "external/JackSDK"]
+	path = external/JackSDK
+	url = https://github.com/SanyaSho/JackSDK.git

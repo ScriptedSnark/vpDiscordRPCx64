@@ -8,8 +8,6 @@
 #define DISCORD_INTEGRATION_H_GUARD
 #pragma once
 
-constexpr char APPLICATION_ID[] = "967069834728849449";
-
 enum DiscordRPC_Mode
 {
 	IDLE,
@@ -19,7 +17,8 @@ enum DiscordRPC_Mode
 
 extern DiscordRPC_Mode mode;
 
-void DiscordRPC_MainThread();
+void DiscordRPC_Init();
+void DiscordRPC_Shutdown();
 
 #endif //DISCORD_INTEGRATION_H_GUARD
 

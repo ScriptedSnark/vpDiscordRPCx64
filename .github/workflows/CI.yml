@@ -1,0 +1,116 @@
+name: CI
+
+env:
+  VERSION_BASE: '2.0.0'
+
+on:
+  push:
+    paths-ignore:
+      - .gitignore
+      - README.md
+      - LICENSE
+  pull_request:
+    paths-ignore:
+      - .gitignore
+      - README.md
+      - LICENSE
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: win64
+            platform: x64
+          - arch: win32
+            platform: Win32
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - uses: microsoft/setup-msbuild@v1.1
+
+    - name: Resolve version
+      run: |
+        $sha = "${{ github.sha }}"
+        $shortSha = $sha.Substring(0,7)
+        $branch = "${{ github.head_ref || github.ref_name }}" -replace '/','-'
+
+        Add-Content -Path $env:GITHUB_ENV -Value "SHORT_SHA=$shortSha"
+        Add-Content -Path $env:GITHUB_ENV -Value "BRANCH_NAME=$branch"
+
+    - name: Configure
+      run: cmake -S . -B build -G "Visual Studio 17 2022" -A ${{ matrix.platform }}
+
+    - name: Build the plugin
+      run: cmake --build build --config Release
+
+    - name: Prepare artifact
+      run: |
+        New-Item -ItemType Directory -Force -Path dist | Out-Null
+        Copy-Item -Path "build/Release/*" -Destination dist -Recurse -Force
+        Get-ChildItem -Path dist -Include *.lib,*.exp -Recurse | Remove-Item -Force
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ github.event_name == 'workflow_dispatch' && format('vpDiscordRPC-{0}-{1}-{2}', matrix.arch, env.VERSION_BASE, env.BRANCH_NAME) || format('vpDiscordRPC-win-{0}-{1}-{2}-nightly-{3}', matrix.arch, env.VERSION_BASE, env.BRANCH_NAME, env.SHORT_SHA) }}
+        path: dist/
+
+  build-linux:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            cflags: ''
+          - arch: x86
+            cflags: '-m32'
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Resolve version
+      run: |
+        sha="${{ github.sha }}"
+        shortSha="${sha:0:7}"
+        branch="${{ github.head_ref || github.ref_name }}"
+        branch="${branch//\//-}"
+
+        echo "SHORT_SHA=$shortSha" >> $GITHUB_ENV
+        echo "BRANCH_NAME=$branch" >> $GITHUB_ENV
+
+    - name: Install toolchain
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake
+        if [ "${{ matrix.arch }}" = "x86" ]; then
+          sudo apt-get install -y gcc-multilib g++-multilib
+        fi
+
+    - name: Configure
+      run: |
+        cmake -S . -B build \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_C_FLAGS="${{ matrix.cflags }}" \
+          -DCMAKE_CXX_FLAGS="${{ matrix.cflags }}"
+
+    - name: Build the plugin
+      run: cmake --build build -j$(nproc)
+
+    - name: Prepare artifact
+      run: |
+        mkdir -p dist
+        cp -av build/Release/. dist/
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ github.event_name == 'workflow_dispatch' && format('vpDiscordRPC-linux-{0}-{1}-{2}', matrix.arch, env.VERSION_BASE, env.BRANCH_NAME) || format('vpDiscordRPC-linux-{0}-{1}-{2}-nightly-{3}', matrix.arch, env.VERSION_BASE, env.BRANCH_NAME, env.SHORT_SHA) }}
+        path: dist/
